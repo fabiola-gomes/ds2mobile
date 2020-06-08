@@ -1,0 +1,7 @@
+{
+  "name": "ControleEstagio",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
