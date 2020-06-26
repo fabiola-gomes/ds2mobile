@@ -10,21 +10,23 @@
   <div class="container">
     <img src="./assets/logo.png" />
 
-  <ion-item color="login-tint" shape="round">
+  <ion-item color="login=tint" shape="round">
     <ion-label position="stacked">Login:</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input type="text" [(ngModel)]="login"></ion-input>
     
   </ion-item>
   
   <ion-item color="login-tint" shape="round" >
     <ion-label position="stacked">Senha:</ion-label>
-    <ion-input type="password"></ion-input>
+    <ion-input type="password"[(ngModel)]="senha"></ion-input>
     
   </ion-item>
-
-  <ion-button shape="round" fill="outline">Entrar</ion-button>
-
-    
+  
+  <ion-button shape="round" fill="outline"(click)="autenticar()">Entrar</ion-button>
+      
+  <ion-item>
+    <ion-label>Hello, {{ aluno.nome }}</ion-label>
+  </ion-item>
   </div>
   </ion-card>
   </div>
