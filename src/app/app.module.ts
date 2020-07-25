@@ -9,21 +9,34 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginService } from './login/login.service';
 import { HttpClientModule } from '@angular/common/http';
+import { PreviewAnyFile } from '@ionic-native/preview-any-file/ngx';
+import { File } from '@ionic-native/file/ngx';
+import { LogoutBotton } from './components/logout/logout.botton'
+import { EstagioService } from './pages/estagio/estagio.service';
+
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    LogoutBotton
+  ],
   entryComponents: [],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule
+    
+    
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    LoginService
+    LoginService,
+    EstagioService,
+    PreviewAnyFile,
+    File
   ],
   bootstrap: [AppComponent]
 })
