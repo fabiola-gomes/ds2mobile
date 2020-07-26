@@ -4,5 +4,7 @@ export interface Estagio {
     nomeOrientador: string,
     nomeEmpresa: string,
     disciplina: string,
-    statusEstagio: string
+    statusEstagio: string,
+    tipoEstagio: any,
+    dataInicioEstagio: Date
 }
