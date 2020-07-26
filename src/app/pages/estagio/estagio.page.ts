@@ -1,9 +1,10 @@
-import { Component, OnInit, AfterContentInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Estagio } from 'src/app/interfaces/estagio';
 import { EstagioService } from './estagio.service';
 import { Sessao } from 'src/app/sessao/sessao';
 import { isUndefined } from 'util';
+import { Observable } from 'rxjs';
 
 
 
@@ -12,37 +13,27 @@ import { isUndefined } from 'util';
   templateUrl: './estagio.page.html',
   styleUrls: ['./estagio.page.scss'],
 })
-export class EstagioPage implements OnInit, AfterContentInit {
+export class EstagioPage implements OnInit {
 
-  estagio: Estagio
+  estagio$: Observable<Estagio>
 
   constructor(private roteador: Router, private estagioService: EstagioService) {
+    
+    while (Sessao.usuario == null) { }
 
+    this.estagio$ = this.estagioService.getEstagio(Sessao.usuario.matricula)
+    this.estagio$.subscribe(dados => Sessao.estagio = dados)
+    
   }
 
-  exibir(){
-    if (Sessao.usuario != null)
-      this.estagioService.getEstagio(Sessao.usuario.matricula)
-        .subscribe(dados => this.estagio = dados)
-    if (!isUndefined(this.estagio))
-      Sessao.estagio = this.estagio
-  }
-
-  sair(){
+  sair() {
+    Sessao.usuario = null
+    Sessao.estagio = null
     this.roteador.navigate(['/login'])
   }
 
   ngOnInit() {
-    
-  }
-
-  ngAfterContentInit(){
 
   }
-
-
-
-
-
 
 }
