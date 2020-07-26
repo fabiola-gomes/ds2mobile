@@ -14,7 +14,7 @@ export class EstagioService{
     }
     
     getEstagio(login: string){
-        return this.http.get<Estagio>(this.API+'/estagio/ativo'+login)
+        return this.http.get<Estagio>(this.API+'/estagio/ativo/'+login)
     }
 }
 
