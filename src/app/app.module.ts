@@ -11,14 +11,14 @@ import { LoginService } from './login/login.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PreviewAnyFile } from '@ionic-native/preview-any-file/ngx';
 import { File } from '@ionic-native/file/ngx';
-import { LogoutBotton } from './components/logout/logout.botton'
+import { LogoutButton } from './components/logout/logout.button'
 import { EstagioService } from './pages/estagio/estagio.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LogoutBotton
+    LogoutButton
   ],
   entryComponents: [],
   imports: [

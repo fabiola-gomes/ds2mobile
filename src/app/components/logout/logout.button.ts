@@ -3,9 +3,9 @@ import { Router } from '@angular/router';
 
 
 
-@Component({selector:'logout',templateUrl:'logout.botton.html'})
+@Component({selector:'logout',templateUrl:'logout.button.html'})
 
-export class LogoutBotton{
+export class LogoutButton{
   constructor (private roteador:Router){
 
   }
