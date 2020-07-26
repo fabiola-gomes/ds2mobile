@@ -16,7 +16,7 @@ export class LoginPage implements OnInit {
 
     login: string
     senha: string
-    aluno: Aluno
+  
     aluno$: Observable<Aluno>
 
   constructor(private loginService: LoginService, private router: Router) { }
@@ -27,8 +27,8 @@ export class LoginPage implements OnInit {
   autenticar(){
 
     this.aluno$ = this.loginService.getAluno(this.login, this.senha)
-    this.aluno$.subscribe( dados => this.aluno = dados,
-                            err => {},
+    this.aluno$.subscribe( dados => Sessao.usuario  = dados,
+                            err => {/*Fazer pop-out de erro */},
                             () => this.router.navigate(['/estagio']))                        
   }
   
