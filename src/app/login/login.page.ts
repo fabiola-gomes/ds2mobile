@@ -5,6 +5,7 @@ import { Aluno } from '../interfaces/aluno'
 import { Router } from '@angular/router'
 import { isUndefined } from 'util'
 import { Sessao } from '../sessao/sessao'
+import { Observable } from 'rxjs'
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ export class LoginPage implements OnInit {
     login: string
     senha: string
     aluno: Aluno
+    aluno$: Observable<Aluno>
 
   constructor(private loginService: LoginService, private router: Router) { }
 
@@ -24,12 +26,10 @@ export class LoginPage implements OnInit {
 
   autenticar(){
 
-    this.loginService.getAluno(this.login, this.senha)
-                                .subscribe( dados => this.aluno = dados)
-      if (!isUndefined(Sessao.usuario = this.aluno)){                       
-        this.router.navigate(['/estagio'])
-        
-      }                         
+    this.aluno$ = this.loginService.getAluno(this.login, this.senha)
+    this.aluno$.subscribe( dados => this.aluno = dados,
+                            err => {},
+                            () => this.router.navigate(['/estagio']))                        
   }
   
 }
